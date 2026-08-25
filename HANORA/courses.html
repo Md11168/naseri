@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="هانورا | محصولات و شیرینی‌های دست‌ساز">
+
+    <title>محصولات | HANORA</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- AOS -->
+    <link
+        href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+        /* =========================================
+           PRODUCTS PAGE
+        ========================================= */
+
+        .products-page {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .products-header {
+            position: relative;
+            padding: 150px 0 55px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .products-header::before,
+        .products-header::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(15px);
+        }
+
+        .products-header::before {
+            width: 330px;
+            height: 330px;
+            top: 80px;
+            right: -130px;
+            background: rgba(233, 30, 99, .07);
+        }
+
+        .products-header::after {
+            width: 280px;
+            height: 280px;
+            bottom: -150px;
+            left: -100px;
+            background: rgba(233, 30, 99, .05);
+        }
+
+        .products-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .discount-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 9px 20px;
+            border-radius: 50px;
+            background: rgba(255,255,255,.8);
+            border: 1px solid rgba(233,30,99,.1);
+            color: var(--pink);
+            font-size: .85rem;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(0,0,0,.05);
+        }
+
+        .products-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            color: var(--pink);
+            font-size: .85rem;
+            font-weight: 700;
+        }
+
+        .products-eyebrow span {
+            width: 28px;
+            height: 2px;
+            background: var(--pink);
+            border-radius: 50px;
+        }
+
+        .products-header h1 {
+            margin: 0 0 10px;
+            color: var(--dark);
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .products-header p {
+            margin: 0;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+
+        /* =========================================
+           PRODUCTS GRID
+        ========================================= */
+
+        .products-grid {
+            padding: 35px 0 90px;
+        }
+
+        /*
+           جلوگیری از تداخل style.css
+           Bootstrap خودش Grid را مدیریت می‌کند.
+        */
+
+        .products-page .products-grid .row {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: stretch !important;
+        }
+
+        .products-page .products-grid .row > [class*="col-"] {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+
+        /* =========================================
+           PRODUCT CARD
+        ========================================= */
+
+        .products-page .product-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+
+            background: rgba(255,255,255,.92);
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 20px;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,.07);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
+        }
+
+        .products-page .product-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(233,30,99,.16);
+            box-shadow: 0 20px 45px rgba(0,0,0,.12);
+        }
+
+
+        /* =========================================
+           IMAGE
+        ========================================= */
+
+        .products-page .product-img {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            background: #fce4ec;
+        }
+
+        .products-page .product-img img {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform .55s ease;
+        }
+
+        .products-page .product-card:hover .product-img img {
+            transform: scale(1.06);
+        }
+
+
+        /* =========================================
+           PRODUCT BODY
+        ========================================= */
+
+        .products-page .product-body {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 18px 17px 19px;
+        }
+
+        .products-page .product-category {
+            margin-bottom: 5px;
+
+            color: var(--pink);
+
+            font-size: .65rem;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .products-page .product-body h6 {
+            min-height: 24px;
+
+            margin-bottom: 6px;
+
+            color: var(--dark);
+
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .products-page .product-meta {
+            min-height: 20px;
+
+            margin-bottom: 13px;
+
+            color: #888;
+
+            font-size: .8rem;
+        }
+
+        .products-page .product-meta i {
+            margin-left: 4px;
+            color: var(--pink);
+        }
+
+
+        /* =========================================
+           BADGE
+        ========================================= */
+
+        .products-page .product-badge {
+            position: absolute;
+
+            top: 14px;
+            right: 14px;
+
+            z-index: 5;
+
+            padding: 6px 12px;
+
+            border-radius: 50px;
+
+            background: var(--pink);
+            color: #fff;
+
+            font-size: .73rem;
+            font-weight: 700;
+
+            box-shadow: 0 5px 15px rgba(233,30,99,.25);
+        }
+
+        .products-page .product-badge.discount {
+            background: #ff6b35;
+        }
+
+
+        /* =========================================
+           FLAVOR
+        ========================================= */
+
+        .products-page .flavor-box {
+            margin-bottom: 13px;
+        }
+
+        .products-page .flavor-label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #555;
+
+            font-size: .76rem;
+            font-weight: 700;
+        }
+
+        .products-page .flavor-select {
+            width: 100%;
+
+            padding: 9px 12px;
+
+            border: 1px solid #ead2d9;
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.9);
+            color: var(--dark);
+
+            font-family: inherit;
+            font-size: .8rem;
+
+            outline: none;
+            cursor: pointer;
+
+            transition: .25s ease;
+        }
+
+        .products-page .flavor-select:hover,
+        .products-page .flavor-select:focus {
+            border-color: var(--pink);
+        }
+
+        .products-page .flavor-select:focus {
+            box-shadow: 0 0 0 4px rgba(233,30,99,.08);
+        }
+
+
+        /* =========================================
+           PRICE
+        ========================================= */
+
+        .products-page .product-footer {
+            margin-top: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .products-page .product-price {
+            color: var(--pink);
+
+            font-size: .98rem;
+            font-weight: 800;
+        }
+
+        .products-page .product-price span {
+            font-size: .7rem;
+            font-weight: 500;
+        }
+
+        .products-page .product-price del {
+            display: block;
+
+            margin-bottom: 2px;
+
+            color: #999;
+
+            font-size: .7rem;
+            font-weight: 500;
+        }
+
+
+        /* =========================================
+           ADD BUTTON
+        ========================================= */
+
+        .products-page .btn-add {
+            width: 100%;
+
+            margin-top: 12px !important;
+
+            padding: 10px 14px;
+
+            border: 0;
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                var(--pink),
+                var(--pink-dark)
+            );
+
+            color: #fff;
+
+            font-family: inherit;
+            font-size: .85rem;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow: 0 7px 18px rgba(233,30,99,.18);
+
+            transition: .3s ease;
+        }
+
+        .products-page .btn-add:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(233,30,99,.28);
+        }
+
+        .products-page .btn-add:active {
+            transform: scale(.98);
+        }
+
+
+        /* =========================================
+           CART
+        ========================================= */
+
+        .products-page .cart-box {
+            position: relative;
+
+            margin-top: 30px;
+            padding: 2.5rem;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            background: rgba(255,255,255,.82);
+
+            border: 1px solid rgba(255,255,255,.9);
+
+            box-shadow:
+                0 15px 50px rgba(0,0,0,.07);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .products-page .cart-box h4 {
+            margin-bottom: 2rem;
+
+            color: var(--dark);
+
+            font-weight: 900;
+        }
+
+        .products-page #cartItems {
+            margin-top: 10px;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+        }
+
+        .products-page #cartItems .list-group-item {
+            padding: 12px 15px;
+
+            background: rgba(252,228,236,.4);
+
+            border-color: rgba(233,30,99,.08);
+
+            font-size: .88rem;
+        }
+
+        .products-page .cart-box .form-control {
+            padding: 12px 15px;
+
+            border: 1.5px solid #f0d0d8;
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.85);
+
+            font-family: inherit;
+        }
+
+        .products-page .cart-box .form-control:focus {
+            background: #fff;
+
+            border-color: var(--pink);
+
+            box-shadow:
+                0 0 0 4px rgba(233,30,99,.1);
+        }
+
+        .products-page .cart-box .btn-main {
+            min-width: 190px;
+            border: none;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (min-width: 768px) and (max-width: 991px) {
+
+            .products-page .product-img {
+                height: 200px;
+            }
+
+            .products-page .product-body {
+                padding: 16px 14px;
+            }
+
+            .products-page .product-body h6 {
+                font-size: .92rem;
+            }
+
+            .products-page .product-meta {
+                font-size: .75rem;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 767px) {
+
+            .products-header {
+                padding: 125px 0 40px;
+            }
+
+            .products-header h1 {
+                font-size: 2rem;
+            }
+
+            .products-header p {
+                font-size: .9rem;
+            }
+
+            .discount-banner {
+                padding: 8px 14px;
+                font-size: .75rem;
+            }
+
+            .products-grid {
+                padding-top: 25px;
+            }
+
+            .products-page .products-grid .row {
+                --bs-gutter-x: 12px;
+                --bs-gutter-y: 16px;
+            }
+
+            .products-page .product-img {
+                height: 165px;
+            }
+
+            .products-page .product-body {
+                padding: 14px 12px 15px;
+            }
+
+            .products-page .product-body h6 {
+                font-size: .88rem;
+            }
+
+            .products-page .product-meta {
+                font-size: .72rem;
+            }
+
+            .products-page .product-price {
+                font-size: .82rem;
+            }
+
+            .products-page .flavor-label {
+                font-size: .7rem;
+            }
+
+            .products-page .flavor-select {
+                padding: 8px;
+                font-size: .72rem;
+            }
+
+            .products-page .btn-add {
+                padding: 9px 8px;
+                font-size: .75rem;
+            }
+
+            .products-page .product-badge {
+                top: 9px;
+                right: 9px;
+
+                padding: 5px 8px;
+
+                font-size: .65rem;
+            }
+
+            .products-page .cart-box {
+                padding: 1.4rem;
+                border-radius: 18px;
+            }
+
+        }
+
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 400px) {
+
+            .products-page .product-img {
+                height: 145px;
+            }
+
+            .products-page .product-body {
+                padding: 12px 10px;
+            }
+
+            .products-page .product-body h6 {
+                font-size: .82rem;
+            }
+
+            .products-page .product-price {
+                font-size: .75rem;
+            }
+
+            .products-page .product-meta {
+                font-size: .68rem;
+            }
+
+            .products-page .flavor-select {
+                font-size: .68rem;
+            }
+
+        }
+
+        /* =========================================
+           SECTION HEADER (shared: products / cakes)
+        ========================================= */
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: var(--pink);
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .section-eyebrow span {
+            width: 26px;
+            height: 2px;
+            background: var(--pink);
+            border-radius: 50px;
+        }
+
+        .section-header h2 {
+            margin: 0 0 8px;
+            color: var(--dark);
+            font-size: 1.9rem;
+            font-weight: 900;
+        }
+
+        .section-header p {
+            margin: 0;
+            color: var(--gray);
+            font-size: .92rem;
+        }
+
+        .cakes-section .section-eyebrow,
+        .cakes-section .section-eyebrow span {
+            color: #b8863f;
+            background: #b8863f;
+        }
+
+        .cakes-section .section-eyebrow {
+            background: none;
+            color: #b8863f;
+        }
+
+
+        /* =========================================
+           BIRTHDAY CAKES SECTION (separated, premium look)
+        ========================================= */
+
+        .cakes-section {
+            position: relative;
+            padding: 60px 0 90px;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(184,134,63,.05), rgba(255,255,255,0) 60%);
+        }
+
+        .cakes-section::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            left: -120px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(184,134,63,.06);
+            filter: blur(15px);
+            pointer-events: none;
+        }
+
+        .cakes-section .product-card {
+            border-color: rgba(184,134,63,.18);
+        }
+
+        .cakes-section .product-card:hover {
+            border-color: rgba(184,134,63,.35);
+            box-shadow: 0 20px 45px rgba(0,0,0,.12);
+        }
+
+        .cakes-section .product-category {
+            color: #b8863f;
+            letter-spacing: 1.5px;
+        }
+
+        .cakes-section .product-price {
+            color: #b8863f;
+        }
+
+        .cakes-section .btn-add {
+            background: linear-gradient(135deg, #cf9c50, #b8863f);
+            box-shadow: 0 7px 18px rgba(184,134,63,.25);
+        }
+
+        .cakes-section .btn-add:hover {
+            box-shadow: 0 10px 25px rgba(184,134,63,.35);
+        }
+
+        .product-badge.premium {
+            background: linear-gradient(135deg, #cf9c50, #b8863f);
+            box-shadow: 0 5px 15px rgba(184,134,63,.3);
+        }
+
+        .birthday-cake-images {
+            display: flex;
+            gap: 3px;
+            padding: 3px;
+            justify-content: center;
+        }
+
+        .birthday-cake-images img {
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            object-fit: cover;
+            border-radius: 8px;
+            max-width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+
+        /* =========================================
+           ORDER SECTION
+        ========================================= */
+
+        .order-section {
+            padding: 10px 0 90px;
+        }
+
+        @media (max-width: 767px) {
+
+            .section-header {
+                margin-bottom: 26px;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .cakes-section {
+                padding: 40px 0 60px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="products-page">
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+
+        <div class="container">
+
+            <a
+                class="navbar-brand hanora-logo"
+                href="index.html"
+                aria-label="حانورا"
+            >
+
+            
+      <span class="logo-symbol">
+        <img
+          src="images/logo.png"
+          alt="حانورا"
+          class="logo-img"
+        >
+      </span>
+
+                <span class="logo-text">
+
+                    <strong>HANORA</strong>
+
+                    <small>SWEET &amp; HANDMADE</small>
+
+                </span>
+
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navContent"
+                aria-controls="navContent"
+                aria-expanded="false"
+                aria-label="باز کردن منو"
+            >
+
+                <span class="toggler-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+            </button>
+
+
+            <div
+                class="collapse navbar-collapse"
+                id="navContent"
+            >
+
+                <ul class="navbar-nav mx-auto hanora-menu">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">
+                            <i class="bi bi-house-door"></i>
+                            خانه
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="courses.html">
+                            <i class="bi bi-grid"></i>
+                            محصولات
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#birthday-cakes">
+                            <i class="bi bi-cake2"></i>
+                            کیک تولد
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="guide.html">
+                            <i class="bi bi-info-circle"></i>
+                            راهنما و سفارش
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#popular">
+                            <i class="bi bi-stars"></i>
+                            پرفروش‌ها
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#why">
+                            <i class="bi bi-heart"></i>
+                            چرا حانورا
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#reviews">
+                            <i class="bi bi-chat-heart"></i>
+                            نظرات
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">
+                            <i class="bi bi-telephone"></i>
+                            تماس
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <div class="nav-actions">
+
+                    <a href="#orderForm" class="nav-shop-btn">
+
+                        <i class="bi bi-bag-heart"></i>
+
+                        <span>سبد خرید</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <section class="products-header">
+
+        <div class="container">
+
+            <div class="discount-banner">
+
+                <i class="bi bi-gift"></i>
+
+                با اولین خرید 5٪ تخفیف برای خرید بعدی
+
+            </div>
+
+
+            <div class="products-eyebrow">
+
+                <span></span>
+
+                HANORA SWEET HOUSE
+
+                <span></span>
+
+            </div>
+
+
+            <h1>
+                شیرینی‌های حانورا
+            </h1>
+
+
+            <p>
+                دست‌ساز، تازه و آماده ارسال
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <section class="products-grid">
+
+        <div class="container">
+
+            <div class="section-header" data-aos="fade-up">
+
+                <div class="section-eyebrow">
+                    <span></span>
+                    HANORA EVERYDAY SWEETS
+                    <span></span>
+                </div>
+
+                <h2>شیرینی و دسر روزانه</h2>
+
+                <p>طعم‌های متنوع، برای هر روزتان</p>
+
+            </div>
+
+            <div class="row g-4">
+
+
+                <!-- 1 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-badge">
+                            <i class="bi bi-fire"></i>
+                            پرفروش
+                        </div>
+
+                        <div class="product-img">
+                            <img
+                                src="images/pieholo.png"
+                                alt="پای میوه‌ای"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                FRUIT PIE
+                            </div>
+
+                            <h6>
+                                پای میوه‌ای
+                            </h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                ۶۰۰ گرم
+                            </div>
+
+                            <div class="flavor-box">
+
+                                <label
+                                    class="flavor-label"
+                                    for="flavor-pie"
+                                >
+                                    🍓 انتخاب طعم
+                                </label>
+
+                                <select
+                                    class="flavor-select"
+                                    id="flavor-pie"
+                                >
+
+                                    <option value="">
+                                        انتخاب کنید
+                                    </option>
+
+                                    <option value="هلو">
+                                        🍑 هلو
+                                    </option>
+
+                                    <option value="آلبالو">
+                                        🍒 آلبالو
+                                    </option>
+
+                                    <option value="سیب">
+                                        🍎 سیب
+                                    </option>
+
+                                    <option value="توت‌فرنگی">
+                                        🍓 توت‌فرنگی
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۵۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addProductWithFlavor('پای میوه‌ای','flavor-pie')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 2 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/ck.png"
+                                alt="کوکی رژیمی"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                DIET COOKIE
+                            </div>
+
+                            <h6>کوکی رژیمی</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                بسته ۶ عددی
+                            </div>
+
+                            <div class="flavor-box">
+
+                                <label
+                                    class="flavor-label"
+                                    for="flavor-cookie"
+                                >
+                                    🍓 انتخاب طعم
+                                </label>
+
+                                <select
+                                    class="flavor-select"
+                                    id="flavor-cookie"
+                                >
+
+                                    <option value="">
+                                        انتخاب کنید
+                                    </option>
+
+                                    <option value="شکلاتی">
+                                        🍫 شکلاتی
+                                    </option>
+
+                                    <option value="وانیلی">
+                                        🍦 وانیلی
+                                    </option>
+
+                                    <option value="نسکافه ای">
+                                        ☕ نسکافه ای
+                                    </option>
+
+                                    <option value="گردویی">
+                                        🌰 گردویی
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۳۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addProductWithFlavor('کوکی','flavor-cookie')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 3 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="150"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/tartt.png"
+                                alt="تارت"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                TART
+                            </div>
+
+                            <h6>تارت</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                بسته ۳۰۰ گرمی
+                            </div>
+
+                            <div class="flavor-box">
+
+                                <label
+                                    class="flavor-label"
+                                    for="flavor-tart"
+                                >
+                                    🍓 انتخاب طعم
+                                </label>
+
+                                <select
+                                    class="flavor-select"
+                                    id="flavor-tart"
+                                >
+
+                                    <option value="">
+                                        انتخاب کنید
+                                    </option>
+
+                                    <option value="شکلاتی">
+                                        🍫 شکلاتی
+                                    </option>
+
+                                    <option value="میوه‌ای">
+                                        🍓 میوه‌ای
+                                    </option>
+
+                                    <option value="کاراملی">
+                                        🍯 کاراملی
+                                    </option>
+
+                                    <option value="نسکافه ای">
+                                        ☕ نسکافه ای
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۳۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addProductWithFlavor('تارت','flavor-tart')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 4 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-badge">
+                            <i class="bi bi-gift"></i>
+                            ویژه
+                        </div>
+
+                        <div class="product-img">
+                            <img
+                                src="images/donut.png"
+                                alt="باکس دونات حانورا"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                DONUT BOX
+                            </div>
+
+                            <h6> باکس دونات حانورا</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-gift"></i>
+                                باکس ۷ عددی
+                            </div>
+
+                            <div class="flavor-box">
+
+                                <label
+                                    class="flavor-label"
+                                    for="flavor-box"
+                                >
+                                    🍓 انتخاب طعم
+                                </label>
+
+                                <select
+                                    class="flavor-select"
+                                    id="flavor-box"
+                                >
+
+                                    <option value="">
+                                        انتخاب کنید
+                                    </option>
+
+                                    <option value="مخلوط">
+                                        🍪 مخلوط
+                                    </option>
+
+                                    <option value="شکلاتی">
+                                        🍫 شکلاتی
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۷۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addProductWithFlavor('باکس شیرینی هانورا','flavor-box')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 5 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-badge discount">
+                            پیشنهادی
+                        </div>
+
+                        <div class="product-img">
+                            <img
+                                src="images/bruny.png"
+                                alt="براونی کاپ‌کیکی"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                BRUNY
+                            </div>
+
+                            <h6>براونی کاپ‌کیکی</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                یک کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+
+                                    ۶۰۰٬۰۰۰
+
+                                    <span>تومان</span>
+
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('براونی کاپ‌کیکی')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 6 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/CH.png"
+                                alt="کوکی قلبی"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                COOKIE HART
+                            </div>
+
+                            <h6>کوکی قلبی</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                یک کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۶۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کوکی قلبی')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 7 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="150"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/Coconutsweets.png"
+                                alt="شیرینی نارگیلی"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                COCONUT SWEETS
+                            </div>
+
+                            <h6>شیرینی نارگیلی</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                یک کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۶۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('شیرینی نارگیلی')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 8 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/tartlet.png"
+                                alt="تارت لت"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                TART LET
+                            </div>
+
+                            <h6>تارت لت</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                بسته ۳۰۰ گرمی
+                            </div>
+
+                            <div class="flavor-box">
+
+                                <label
+                                    class="flavor-label"
+                                    for="flavor-tartlet"
+                                >
+                                    🍓 انتخاب طعم
+                                </label>
+
+                                <select
+                                    class="flavor-select"
+                                    id="flavor-tartlet"
+                                >
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="شکلاتی">🍫 شکلاتی</option>
+                                    <option value="نسکافه ای">☕ نسکافه ای</option>
+                                    <option value="توت فرنگی">🍓 توت فرنگی</option>
+                                    <option value="هلو">🍑 هلو</option>
+                                    <option value="آلبالو">🍒 آلبالو</option>
+                                    <option value="خامه ای">🍰 خامه ای میوه فصل</option>
+                                </select>
+
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۳۵۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addProductWithFlavor('تارت لت','flavor-tartlet')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 9 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/boxcookie.png"
+                                alt="کوکی باکس "
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                COOKIE BOX
+                            </div>
+
+                            <h6>کوکی باکس</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                باکس ۳۰۰ گرمی
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۳۵۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کوکی باکس')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 10 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/cakeroll.png"
+                                alt="رولت کیک"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                CAKE ROLL
+                            </div>
+
+                            <h6>رولت کیک</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                ۵۰۰ گرم
+                            </div>
+
+                            <div class="flavor-box">
+
+                                <label
+                                    class="flavor-label"
+                                    for="flavor-roll"
+                                >
+                                    🍓 انتخاب طعم
+                                </label>
+
+                                <select
+                                    class="flavor-select"
+                                    id="flavor-roll"
+                                >
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="شکلاتی">🍫 شکلاتی</option>
+                                    <option value="نسکافه ای">☕ نسکافه ای</option>
+                                    <option value="توت فرنگی">🍓 توت فرنگی</option>
+                                    <option value="میوه فصل">🍰 خامه ای میوه فصل </option>
+                                </select>
+
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۴۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addProductWithFlavor('رولت کیک','flavor-roll')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 12 -->
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/honycake.png"
+                                alt="کیک عسلی"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                HONEY CAKE
+                            </div>
+
+
+                            <h6>کیک عسلی</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                یک کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۶۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کیک عسلی')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="col-6 col-md-3"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+
+                    <div class="product-card">
+
+                        <div class="product-img">
+                            <img
+                                src="images/yazdi.jpeg"
+                                alt="کیک یزدی"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                YAZDI CAKE
+                            </div>
+
+
+                            <h6>کیک یزدی</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                یک کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+
+                                <div class="product-price">
+                                    ۴۵۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کیک یزدی')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BIRTHDAY CAKES (separate section)
+    ========================== -->
+
+    <section class="cakes-section" id="birthday-cakes">
+
+        <div class="container">
+
+            <div class="section-header" data-aos="fade-up">
+
+                <div class="section-eyebrow">
+                    <span></span>
+                    HANORA BIRTHDAY CAKES
+                    <span></span>
+                </div>
+
+                <h2>کیک‌های تولد</h2>
+
+                <p>سفارشی، خامه‌ای و آماده جشن‌های شما</p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <!-- کیک شاه توت -->
+                <div
+                    class="col-12 col-md-4"
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                >
+                    <div class="product-card">
+
+                        <div class="product-badge premium">
+                            <i class="bi bi-stars"></i>
+                            ویژه جشن
+                        </div>
+
+                        <div class="product-img birthday-cake-images">
+                            <img src="images/shahtot.jpeg" alt="کیک تولد شاه توت" loading="lazy">
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">BIRTHDAY CAKE</div>
+
+                            <h6>کیک تولد شاه توت</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                ۲ کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    ۱٬۷۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کیک تولد شاه توت')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- کیک لیمو نعناع -->
+                <div
+                    class="col-12 col-md-4"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+                    <div class="product-card">
+
+                        <div class="product-img birthday-cake-images">
+                            <img src="images/limo.jpeg" alt="کیک تولد لیمو نعناع" loading="lazy">
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">BIRTHDAY CAKE</div>
+
+                            <h6>کیک تولد لیمو نعناع</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                ۲.۵ کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    ۲٬۰۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کیک تولد لیمو نعناع')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- کیک ساده -->
+                <div
+                    class="col-12 col-md-4"
+                    data-aos="fade-up"
+                    data-aos-delay="150"
+                >
+                    <div class="product-card">
+
+                        <div class="product-img birthday-cake-images">
+                            <img src="images/shahtot.jpeg" alt="کیک تولد ساده" loading="lazy">
+                        </div>
+
+                        <div class="product-body">
+
+                            <div class="product-category">BIRTHDAY CAKE</div>
+
+                            <h6>کیک تولد ساده</h6>
+
+                            <div class="product-meta">
+                                <i class="bi bi-box-seam"></i>
+                                ۱ کیلوگرم
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    ۱٬۰۰۰٬۰۰۰
+                                    <span>تومان</span>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                onclick="addToCart('کیک تولد ساده')"
+                            >
+                                <i class="bi bi-cart-plus"></i>
+                                افزودن به سبد
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CART / ORDER
+    ========================== -->
+
+    <section class="order-section">
+
+        <div class="container">
+
+            <div
+                class="cart-box"
+                id="orderForm"
+                data-aos="fade-up"
+            >
+
+                <h4 class="text-center">
+                    🛒 سبد خرید و ثبت سفارش
+                </h4>
+
+
+                <form
+                    id="emailForm"
+                    onsubmit="sendOrderEmail(event); return false;"
+                >
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label
+                                class="form-label fw-medium"
+                                for="userName"
+                            >
+                                نام و نام خانوادگی
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="userName"
+                                required
+                                autocomplete="name"
+                                placeholder="نام کامل"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label
+                                class="form-label fw-medium"
+                                for="userPhone"
+                            >
+                                شماره تماس
+                            </label>
+
+                            <input
+                                type="tel"
+                                class="form-control"
+                                id="userPhone"
+                                required
+                                autocomplete="tel"
+                                placeholder="۰۹۱۲xxxxxxx"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-4">
+
+                        <label class="form-label fw-medium">
+                            محصولات انتخاب‌شده:
+                        </label>
+
+                        <ul
+                            id="cartItems"
+                            class="list-group list-group-flush"
+                        ></ul>
+
+                        <p
+                            id="emptyCartMsg"
+                            class="text-muted small mt-2"
+                        >
+                            هنوز محصولی اضافه نکرده‌اید.
+                        </p>
+
+                    </div>
+
+
+                    <div class="text-center mt-4">
+
+                        <button
+                            type="submit"
+                            class="btn-main px-5"
+                            id="submitOrderBtn"
+                        >
+                            ثبت سفارش
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="thankMessage"
+                        class="text-center mt-3 fw-bold"
+                        style="color:var(--pink);"
+                    ></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+   <footer class="footer">
+
+
+        <div class="container">
+
+
+            <div class="row g-4">
+
+
+
+                <div class="col-lg-5">
+
+
+                    <a
+                        href="index.html"
+                        class="footer-logo"
+                    >
+
+
+                        <span>
+                            <i class="bi bi-flower1"></i>
+                        </span>
+
+
+                        HANORA
+
+
+                    </a>
+
+
+
+                    <p class="footer-description">
+                        شیرینی‌های دست‌ساز، تازه و خوشمزه
+                        برای لحظه‌هایی که دوست دارید
+                        بیشتر به یاد بمونن.
+                    </p>
+
+
+
+                    <div class="footer-social">
+
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+
+                        <a href="#" aria-label="YouTube">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+
+
+                        <a
+                            href="mailto:naseriimahdiyar@gmail.com"
+                            aria-label="Email"
+                        >
+                            <i class="bi bi-envelope"></i>
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-6 col-lg-2">
+
+
+                    <h5>دسترسی سریع</h5>
+
+
+                    <a href="index.html#home">
+                        خانه
+                    </a>
+
+
+                    <a href="courses.html">
+                        محصولات
+                    </a>
+
+
+                    <a href="courses.html#birthday-cakes">
+                        کیک تولد
+                    </a>
+
+
+                    <a href="guide.html">
+                        راهنما و سفارش
+                    </a>
+
+
+                    <a href="index.html#popular">
+                        پرفروش‌ها
+                    </a>
+
+
+                    <a href="index.html#contact">
+                        تماس
+                    </a>
+
+
+                </div>
+
+
+
+                <div class="col-6 col-lg-2">
+
+
+                    <h5>حانورا</h5>
+
+
+                    <a href="index.html#why">
+                        چرا حانورا
+                    </a>
+
+
+                    <a href="index.html#reviews">
+                        نظرات مشتریان
+                    </a>
+
+
+                    <a href="courses.html">
+                        ثبت سفارش
+                    </a>
+
+
+                </div>
+
+
+
+                <div class="col-lg-3">
+
+
+                    <h5>ارتباط با ما</h5>
+
+                    <div class="footer-contact">
+                        <span>
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        naseriimahdiyar@gmail.com
+                    </div>
+
+
+
+                    <div class="footer-contact">
+                        <span>
+                            <i class="bi bi-instagram"></i>
+                        </span>
+                        @hanora.bake
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+
+                <span>
+                    ©  حانورا — تمامی حقوق محفوظ است.
+                </span>
+
+
+                <span>
+                    Made with
+                    <i class="bi bi-heart-fill"></i>
+                    by HANORA
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </footer>
+
+</div>
+
+
+<!-- Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<!-- AOS -->
+<script
+    src="https://unpkg.com/aos@2.3.4/dist/aos.js"
+></script>
+
+
+<!-- Main JS -->
+<script src="script.js"></script>
+
+
+<!-- EmailJS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+
+
+<!-- Products JS -->
+<script src="script-courses.js"></script>
+
+
+<script>
+    if (typeof AOS !== "undefined") {
+        AOS.init({
+            duration: 650,
+            once: true,
+            offset: 40
+        });
+    }
+</script>
+
+</body>
+</html>
